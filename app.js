@@ -11,7 +11,10 @@ const getCurrencyName = function (para) {
 const getCurrencySymbols = function (para) {
   const [key] = Object.entries(para);
   const [key1, symbols1] = key;
-  return symbols1.symbol;
+
+  const sym = symbols1.symbol ? symbols1.symbol : "none";
+
+  return sym;
 };
 const getLanguage = function (language) {
   const [key] = Object.entries(language);
@@ -76,19 +79,6 @@ const getSearchInput = async () => {
 
   container.innerHTML = filteredData;
 };
-document.addEventListener("click", function (event) {
-  if (event.target.classList.contains("btn-info")) {
-    const card = event.target.closest(".card");
-    if (card) {
-      const countryURL = card.getAttribute("data-country-url");
-      if (countryURL) {
-        // Now, you can use the countryURL as needed, for example, open it in a new tab
-        console.log(countryURL);
-        window.open(countryURL, "_blank");
-      }
-    }
-  }
-});
 
 UserInput.addEventListener("input", getSearchInput);
 window.addEventListener("DOMContentLoaded", () => getCountry(url));

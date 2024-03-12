@@ -21,6 +21,7 @@ const getAllLanguages = function (lang) {
 };
 
 const mapData = function (country) {
+  console.log(country.lenght);
   return ` <div class="card mt-3 bg-primary " id="cont">
     <div class='m-3 row'>
       <img
@@ -31,7 +32,7 @@ const mapData = function (country) {
       />
       <img
         class="card-img-left"
-        src=${country.coatOfArms.png}
+        src=${country.coatOfArms.png ? country.coatOfArms.png : "download.png"}
         alt="Card image cap"
         style="width: 50%"
       />
@@ -104,8 +105,7 @@ const mapData = function (country) {
 const getEachCountryFullData = async () => {
   const url = await fetch(`https://restcountries.com/v3.1/name/${nameid}`);
   const data = await url.json();
-  const mapArr = data.map(mapData);
-  console.log(data);
+  const mapArr = data.length === 1 ? data.map(mapData) : [data[0]].map(mapData);
 
   container.innerHTML = mapArr;
 };
