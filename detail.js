@@ -22,7 +22,7 @@ const getAllLanguages = function (lang) {
 
 const mapData = function (country) {
   return ` <div class="card mt-3 bg-primary " id="cont">
-    <div class='m-3 row '>
+    <div class='m-3 row'>
       <img
         class="card-img-right"
         src=${country.flags.png}
@@ -95,6 +95,9 @@ const mapData = function (country) {
         
         </div>
       </div>
+        
+        <a href="index.html"  class="btn btn-info">Back to home</a>
+        </div>
     </div>`;
 };
 
